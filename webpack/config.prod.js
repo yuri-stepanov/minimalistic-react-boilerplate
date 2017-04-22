@@ -4,11 +4,14 @@ const createBaseConfig = require('./config')
 
 module.exports = function createConfig() {
   return webpackMerge(createBaseConfig.apply(null, arguments), {
+    // for production config we use only our code as entry point
     entry: './index.js',
     devtool: 'hidden-source-map',
     plugins: [
+      // we will not emmit code in case of build step failed
       new webpack.NoErrorsPlugin(),
-      new webpack.optimize.UglifyJsPlugin({ sourceMap: true, minimize: false })
+      // minimize our code
+      new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
     ]
   })
 }
