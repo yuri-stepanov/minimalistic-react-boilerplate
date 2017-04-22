@@ -1,7 +1,7 @@
 {
   "name": "minimalistic-react-boilerplate",
   "version": "1.0.0",
-  "description": "A sensible minimal to write react",
+  "description": "A sensible minimum to write react",
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=prop webpack",

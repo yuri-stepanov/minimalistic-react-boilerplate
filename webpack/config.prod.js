@@ -9,7 +9,13 @@ module.exports = function createConfig() {
     devtool: 'hidden-source-map',
     plugins: [
       // we will not emmit code in case of build step failed
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      // turing production mode `On` in react
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }),
       // minimize our code
       new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
     ]
