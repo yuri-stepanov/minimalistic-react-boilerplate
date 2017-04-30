@@ -4,7 +4,7 @@
   "description": "A sensible minimum to write react",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=prop webpack",
+    "build": "cross-env NODE_ENV=prod webpack",
     "start": "cross-env NODE_ENV=dev webpack-dev-server"
   },
   "author": "Yury Stsiapanau",
