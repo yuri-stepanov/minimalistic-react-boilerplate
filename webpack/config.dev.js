@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge')
 const webpack = require('webpack')
 const createBaseConfig = require('./config')
 
-module.exports = function createConfig({ distFolder, rootFolder }) {
+module.exports = function createConfig({ distFolder, rootFolder, srcFolder }) {
   return webpackMerge(createBaseConfig.apply(null, arguments), {
     entry: [
       // hot reloading stuff
@@ -26,6 +26,16 @@ module.exports = function createConfig({ distFolder, rootFolder }) {
       // for single page applications we should always serve `index.hml`
       // and let the client routing do the rest
       historyApiFallback: true
+    },
+    module: {
+      rules: [
+        // using plain css loader for styles
+        {
+          test: /\.css$/,
+          include: resolve(rootFolder, srcFolder),
+          use: ["style-loader", "css-loader"]
+        }
+      ]
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),

@@ -21,16 +21,10 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
           test: /\.js$/,
           use: 'babel-loader',
           include: resolve(rootFolder, srcFolder)
-        },
-        // using plain css loader for styles
-        {
-          test: /\.css$/,
-          include: resolve(rootFolder, srcFolder),
-          use: ['style-loader', 'css-loader']
         }
       ]
     },
-    // with that we are sayning to webpack to look into 2 folders for modules
+    // with that we are saying to webpack to look into 2 folders for modules
     // 1) our `srcFolder`
     // 2) `node_modules`
     resolve: {
@@ -46,7 +40,8 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
         template: resolve(rootFolder, 'template/index.html')
       }),
       // clean build folder before each build
-      new CleanWebpackPlugin(distFolder)
+      new CleanWebpackPlugin(distFolder),
+      
     ]
   }
 }
