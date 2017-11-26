@@ -28,6 +28,7 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
     // 1) our `srcFolder`
     // 2) `node_modules`
     resolve: {
+      extensions: ['.js', '.jsx'],
       modules: [
         resolve(rootFolder, srcFolder),
         resolve(rootFolder, 'node_modules')
@@ -41,7 +42,7 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
       }),
       // clean build folder before each build
       new CleanWebpackPlugin(distFolder),
-      
+
     ]
   }
 }
