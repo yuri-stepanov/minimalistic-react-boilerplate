@@ -19,9 +19,17 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
         // presets are in separate .babelrc file
         {
           test: /\.js$/,
-          use: 'babel-loader',
-          include: resolve(rootFolder, srcFolder)
-        }
+          loader: 'babel-loader',
+          include: resolve(rootFolder, srcFolder),
+        },
+        // loading fonts
+        {
+          test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+          },
+        },
       ]
     },
     // with that we are saying to webpack to look into 2 folders for modules
