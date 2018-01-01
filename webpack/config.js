@@ -18,7 +18,7 @@ module.exports = function createConfig({ distFolder, srcFolder, rootFolder }) {
         // transpile `.js` files with babel
         // presets are in separate .babelrc file
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           loader: 'babel-loader',
           include: resolve(rootFolder, srcFolder),
         },
